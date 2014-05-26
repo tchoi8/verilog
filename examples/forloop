@@ -1,0 +1,29 @@
+#! /usr/local/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x7fd60c8000c0 .scope module, "main" "main" 2 3;
+ .timescale 0 0;
+v0x7fd60c8001a0_0 .var "i", 43 0;
+    .scope S_0x7fd60c8000c0;
+T_0 ;
+    %set/v v0x7fd60c8001a0_0, 0, 44;
+T_0.0 ;
+    %load/v 8, v0x7fd60c8001a0_0, 44;
+   %cmpi/u 8, 15, 44;
+    %jmp/0xz T_0.1, 5;
+    %vpi_call 2 13 "$display", "Current value of i is %d", v0x7fd60c8001a0_0;
+    %ix/load 0, 1, 0;
+    %load/vp0 8, v0x7fd60c8001a0_0, 44;
+    %set/v v0x7fd60c8001a0_0, 8, 44;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "forloop.vl";

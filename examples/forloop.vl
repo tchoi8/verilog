@@ -1,0 +1,19 @@
+
+
+module main();
+
+reg [43:0] i;
+
+initial
+ 
+
+ for (i = 0; i < 15; i =i+1)
+ 	 begin
+
+   	  	$display ("Current value of i is %d", i);
+    end
+
+endmodule
+ 
+
+ 

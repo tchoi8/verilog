@@ -1,0 +1,20 @@
+
+
+module main();
+
+
+        module initmem;
+           reg [15:0] mem16_256 [255:0];
+           reg [15:0] address;
+           integer    index;
+
+           initial begin
+              address = 24;
+              for(index = 0; index < 256; index = index + 1) begin
+              mem16_256 [index] = address;
+              address = address + 1;
+              $display("%d", mem16_256[index]);
+              end
+           end
+
+        endmodule // initmem

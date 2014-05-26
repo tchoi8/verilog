@@ -1,0 +1,18 @@
+ 
+module main();
+
+ 
+reg [1:8] x;
+reg [1:8] y;
+
+initial 
+	begin 
+  		x = 0; 
+  		repeat( 16 ) 
+  			begin 
+      			$display("y= ", x); 
+     			x = x + 1; 
+  		end 
+end
+
+endmodule 

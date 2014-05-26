@@ -1,0 +1,95 @@
+#! /usr/local/bin/vvp
+:ivl_version "0.9.7 " "(v0_9_7)";
+:vpi_time_precision + 0;
+:vpi_module "system";
+:vpi_module "v2005_math";
+:vpi_module "va_math";
+S_0x7fe360d07ef0 .scope module, "arbiter_tb" "arbiter_tb" 2 29;
+ .timescale 0 0;
+v0x7fe360d18000_0 .var "clock", 0 0;
+v0x7fe360d18090_0 .net "gnt0", 0 0, v0x7fe360d17d10_0; 1 drivers
+v0x7fe360d18130_0 .net "gnt1", 0 0, v0x7fe360d17da0_0; 1 drivers
+v0x7fe360d181f0_0 .var "req0", 0 0;
+v0x7fe360d18290_0 .var "req1", 0 0;
+v0x7fe360d18340_0 .var "reset", 0 0;
+S_0x7fe360d07fd0 .scope module, "U0" "arbiter" 2 55, 2 1, S_0x7fe360d07ef0;
+ .timescale 0 0;
+v0x7fe360d020e0_0 .net "clock", 0 0, v0x7fe360d18000_0; 1 drivers
+v0x7fe360d17d10_0 .var "gnt_0", 0 0;
+v0x7fe360d17da0_0 .var "gnt_1", 0 0;
+v0x7fe360d17e20_0 .net "req_0", 0 0, v0x7fe360d181f0_0; 1 drivers
+v0x7fe360d17eb0_0 .net "req_1", 0 0, v0x7fe360d18290_0; 1 drivers
+v0x7fe360d17f70_0 .net "reset", 0 0, v0x7fe360d18340_0; 1 drivers
+E_0x7fe360d02510 .event posedge, v0x7fe360d17f70_0, v0x7fe360d020e0_0;
+    .scope S_0x7fe360d07fd0;
+T_0 ;
+    %wait E_0x7fe360d02510;
+    %load/v 8, v0x7fe360d17f70_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x7fe360d17d10_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x7fe360d17da0_0, 0, 0;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0x7fe360d17e20_0, 1;
+    %jmp/0xz  T_0.2, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x7fe360d17d10_0, 0, 1;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x7fe360d17da0_0, 0, 0;
+    %jmp T_0.3;
+T_0.2 ;
+    %load/v 8, v0x7fe360d17eb0_0, 1;
+    %jmp/0xz  T_0.4, 8;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x7fe360d17d10_0, 0, 0;
+    %ix/load 0, 1, 0;
+    %assign/v0 v0x7fe360d17da0_0, 0, 1;
+T_0.4 ;
+T_0.3 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x7fe360d07ef0;
+T_1 ;
+    %vpi_call 2 35 "$monitor", "req0=%b,req1=%b,gnt0=%b,gnt1=%b", v0x7fe360d181f0_0, v0x7fe360d18290_0, v0x7fe360d18090_0, v0x7fe360d18130_0;
+    %set/v v0x7fe360d18000_0, 0, 1;
+    %set/v v0x7fe360d18340_0, 0, 1;
+    %set/v v0x7fe360d181f0_0, 0, 1;
+    %set/v v0x7fe360d18290_0, 0, 1;
+    %delay 5, 0;
+    %set/v v0x7fe360d18340_0, 1, 1;
+    %delay 15, 0;
+    %set/v v0x7fe360d18340_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0x7fe360d181f0_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0x7fe360d181f0_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0x7fe360d18290_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0x7fe360d18290_0, 0, 1;
+    %delay 10, 0;
+    %set/v v0x7fe360d18290_0, 1, 1;
+    %set/v v0x7fe360d181f0_0, 1, 1;
+    %delay 10, 0;
+    %set/v v0x7fe360d18290_0, 0, 1;
+    %set/v v0x7fe360d181f0_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 48 "$finish";
+    %end;
+    .thread T_1;
+    .scope S_0x7fe360d07ef0;
+T_2 ;
+    %delay 5, 0;
+    %load/v 8, v0x7fe360d18000_0, 1;
+    %inv 8, 1;
+    %set/v v0x7fe360d18000_0, 8, 1;
+    %jmp T_2;
+    .thread T_2;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "arbiterc.vl";
